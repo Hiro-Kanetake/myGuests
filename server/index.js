@@ -12,3 +12,12 @@ app.get('/', (req, res) => {
 app.listen(PORT, () => {
   console.log(`myGuests server listening at http://localhost:${PORT}`);
 });
+
+const accountRouter = require('./routes/account');
+app.use('/account', accountRouter);
+
+const guestInfoRouter = require('./routes/guestInfo');
+app.use('/guest', guestInfoRouter);
+
+const guestPreferenceRouter = require('./routes/guestPreference');
+app.use('/guest/:id/preference', guestPreferenceRouter);
