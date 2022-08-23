@@ -29,7 +29,7 @@ module.exports = {
     },
 
     async authenticateAccount(req, res) {
-        const loginInfo = req.body;
+        const loginInfo = req.query;
         if (!validation.validateCredential(loginInfo)) {
             res.status(406).send("BAD DATA. TRY AGAIN");
         } else {
