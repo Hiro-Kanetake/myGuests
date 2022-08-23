@@ -1,0 +1,10 @@
+body {
+    font-size: medium;
+}
+.guestShortInfo {
+    margin: auto;
+    background-color: whitesmoke;
+    width: 400px;
+    border-style: solid;
+    border-color: gray;
+}
