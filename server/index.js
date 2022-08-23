@@ -1,9 +1,11 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const cors = require("cors");
 const app = express();
 const PORT = process.env.PORT || 8080;
 
 app.use(bodyParser.json());
+app.use(cors());
 
 app.get('/', (req, res) => {
   res.send('Welcome to myGuests Server!!');
@@ -16,8 +18,11 @@ app.listen(PORT, () => {
 const accountRouter = require('./routes/account');
 app.use('/account', accountRouter);
 
-const guestInfoRouter = require('./routes/guestInfo');
+const guestInfoRouter = require('./routes/guest');
 app.use('/guest', guestInfoRouter);
 
-const guestPreferenceRouter = require('./routes/guestPreference');
-app.use('/guest/:id/preference', guestPreferenceRouter);
+const propertyRouter = require('./routes/property');
+app.use('/property', propertyRouter);
+
+// const guestPreferenceRouter = require('./routes/guestPreference');
+// app.use('/guest/:id/preference', guestPreferenceRouter);
