@@ -10,7 +10,7 @@ const ACCOUNT_ID = Number(localStorage.getItem("account_id"));
 const DB_URL = "https://myguests-server.herokuapp.com";
 // const DB_URL = "http://localhost:8080";
 
-const TopPage: React.FC = () => {
+const PropertyMainPage: React.FC = () => {
     const navigate = useNavigate();
     const [allGuests, setAllGuests] = useState<
     {
@@ -32,9 +32,11 @@ const TopPage: React.FC = () => {
                 id: PROPERTY_ID,
             }
         }
-        axios.get(`${DB_URL}/property`, propertyId).then((res) => {
-            setPropertyName(res.data.name);
-        })
+        if (PROPERTY_ID) {
+            axios.get(`${DB_URL}/property`, propertyId).then((res) => {
+                setPropertyName(res.data.name);
+            })
+        }
     }, [])
 
     useEffect(() => {
@@ -54,38 +56,51 @@ const TopPage: React.FC = () => {
         });
     }, [allGuests])
 
-    return (
-        <div>
-            <button onClick={(e) => {
-                e.preventDefault();
-                localStorage.setItem("property_id", "");
-                localStorage.setItem("account_id", "");
-                navigate("/")
-            }}>Logout</button>
-
-            <h1>{propertyName}</h1>
-
-            <button onClick={(e) => {
-                e.preventDefault();
-                navigate("/addGuest")
-            }}>Add Guest</button>
-            
-            {allGuests.sort((a, b) => {
-                const nameA = a.last_name.toUpperCase();
-                const nameB = b.last_name.toUpperCase();
-                if (nameA < nameB) {
-                    return -1;
-                }
-                if (nameA > nameB) {
-                    return 1;
-                }
-                return 0;
-            }).map((guest) => {
-                return <GuestShortInfo { ...guest }/>
-            })}
-            
-        </div>
-    )
+    if (PROPERTY_ID) {
+        return (
+            <div>
+                <button onClick={(e) => {
+                    e.preventDefault();
+                    localStorage.removeItem("property_id");
+                    localStorage.removeItem("account_id");
+                    navigate("/")
+                }}>Logout</button>
+    
+                <h1>{propertyName}</h1>
+    
+                <button onClick={(e) => {
+                    e.preventDefault();
+                    navigate("/addGuest")
+                }}>Add Guest</button>
+                
+                {allGuests.sort((a, b) => {
+                    const nameA = a.last_name.toUpperCase();
+                    const nameB = b.last_name.toUpperCase();
+                    if (nameA < nameB) {
+                        return -1;
+                    }
+                    if (nameA > nameB) {
+                        return 1;
+                    }
+                    return 0;
+                }).map((guest) => {
+                    return <GuestShortInfo { ...guest }/>
+                })}
+                
+            </div>
+        )
+    } else {
+        return (
+            <div>
+                <button onClick={(e) => {
+                    e.preventDefault();
+                    localStorage.removeItem("property_id");
+                    localStorage.removeItem("account_id");
+                    navigate("/")
+                }}>Return</button>
+            </div>
+        )
+    }
 }
 
-export default TopPage;
+export default PropertyMainPage;
