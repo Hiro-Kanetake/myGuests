@@ -40,7 +40,6 @@ const Register: React.FC = () => {
             property_id: newAccountInfo.property_id
         },
     }
-    console.log("🟡DATA🟡", newAccountInfo);
 
     axios.post(`${DB_URL}/account`, newAccountInfo).then((res) => {
       console.log(res);
