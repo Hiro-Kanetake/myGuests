@@ -5,8 +5,8 @@ import { useNavigate } from "react-router-dom";
 // import "./App.css";
 
 //TODO setup the DB_URL to switch automatically depending on the environment
-// const DB_URL = "https://myguests-server.herokuapp.com";
-const DB_URL = "http://localhost:8080";
+const DB_URL = "https://myguests-server.herokuapp.com";
+// const DB_URL = "http://localhost:8080";
 
 interface test {
   last_name: string;
