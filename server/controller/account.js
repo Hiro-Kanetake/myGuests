@@ -21,10 +21,10 @@ module.exports = {
                     property_id: accountInfo.property_id 
                 }
                 await accountModel.createAccount(accountRegistInfo);
-                res.status(201).send("ACCOUNT CREATED")
+                res.status(201).send("ACCOUNT CREATED");
             }
         } else {
-            res.status(406).send("BAD DATA. TRY AGAIN")
+            res.status(406).send("BAD DATA. TRY AGAIN");
         }
     },
 

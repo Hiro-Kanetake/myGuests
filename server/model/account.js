@@ -1,4 +1,3 @@
-const { authenticateAccount } = require('../controller/account');
 const knex = require('../db/knex');
 
 const ACCOUNT_TABLE = "account";
@@ -26,4 +25,5 @@ module.exports = {
         .from(ACCOUNT_TABLE)
         .where({ username: loginInfo.username, property_id: loginInfo.property_id });
     }
+
 }
