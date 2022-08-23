@@ -56,11 +56,20 @@ const TopPage: React.FC = () => {
 
     return (
         <div>
+            <button onClick={(e) => {
+                e.preventDefault();
+                localStorage.setItem("property_id", "");
+                localStorage.setItem("account_id", "");
+                navigate("/")
+            }}>Logout</button>
+
             <h1>{propertyName}</h1>
+
             <button onClick={(e) => {
                 e.preventDefault();
                 navigate("/addGuest")
             }}>Add Guest</button>
+            
             {allGuests.sort((a, b) => {
                 const nameA = a.last_name.toUpperCase();
                 const nameB = b.last_name.toUpperCase();
