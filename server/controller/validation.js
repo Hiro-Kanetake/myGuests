@@ -47,5 +47,15 @@ module.exports = {
     } else {
       return false;
     }
+  },
+
+  validatePropertyId(propertyId) {
+    if (
+      propertyId.hasOwnProperty("id")
+    ) {
+      return true;
+    } else {
+      return false;
+    }
   }
 }
