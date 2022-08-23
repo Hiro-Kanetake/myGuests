@@ -2,7 +2,6 @@ import React from "react";
 import axios from "axios";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
-// import "./App.css";
 
 //TODO setup the DB_URL to switch automatically depending on the environment
 const DB_URL = "https://myguests-server.herokuapp.com";

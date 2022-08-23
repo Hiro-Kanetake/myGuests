@@ -1,7 +1,6 @@
 import axios from "axios";
-import "../styles/Login.css";
-import { SubmitHandler, useForm } from "react-hook-form";
-import { Link, useNavigate } from "react-router-dom";
+import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
 // import { useState } from "react";
 
 //TODO setup the DB_URL to switch automatically depending on the environment
