@@ -13,7 +13,7 @@ module.exports = {
     },
 
     async getGuest(req, res) {
-        const viewGuestCredential = await req.body;
+        const viewGuestCredential = await req.query;
         if (validation.validateViewCredential(viewGuestCredential)) {
             const [permissionToView] = await guestModel.viewGuestCredential(viewGuestCredential);
             if (!permissionToView) {
