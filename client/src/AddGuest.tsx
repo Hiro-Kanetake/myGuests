@@ -52,7 +52,7 @@ const AddGuest: React.FC = () => {
   return (
     <div className="addGuest">
       <main>
-        <h2>Register</h2>
+        <h2>Add New Guest</h2>
         <div className="addGuestForm">
           <form onSubmit={handleSubmit(onSubmit)}>
 
